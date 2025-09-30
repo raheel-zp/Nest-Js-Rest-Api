@@ -31,8 +31,8 @@ Security: NestJS Throttler
 
 🚀 Getting Started
 Clone & Install
-git clone https://github.com/your-username/nestjs-portfolio-api.git
-cd nestjs-portfolio-api
+git clone https://github.com/raheel-zp/Nest-Js-Rest-Api.git
+cd Nest-Js-Rest-Api
 npm install
 
 Environment Variables
