@@ -15,15 +15,7 @@ This project was developed as part of learning Nest.js, and serves as a portfoli
 
 ✅ DTOs & Validation → Enforces strict input validation using class-validator
 
-✅ Error Handling → Global exception filters with clean JSON responses
-
-✅ Middleware & Guards → Authentication, request preprocessing, and route protection
-
-✅ Interceptors → For logging and response transformation
-
 ✅ Database Integration (Prisma) → Persistent CRUD operations
-
-✅ Testing Setup → Unit and e2e tests with mocking
 
 🛠 Tech Stack
 
