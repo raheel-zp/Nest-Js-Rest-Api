@@ -1,6 +1,7 @@
 import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { AllExceptionsFilers } from './all-exceptions.filters';
+import { ValidationPipe } from '@nestjs/common';
 //import { MyLoggerService } from './my-logger/my-logger.service';
 //import corsOptions from './config/corsOptions';
 
@@ -15,6 +16,7 @@ async function bootstrap() {
   const { httpAdapter } = app.get(HttpAdapterHost);
 
   app.useGlobalFilters(new AllExceptionsFilers(httpAdapter));
+  app.useGlobalPipes(new ValidationPipe());
   //app.useLogger(app.get(MyLoggerService));
   app.setGlobalPrefix('api');
   //app.enableCors(corsOptions);

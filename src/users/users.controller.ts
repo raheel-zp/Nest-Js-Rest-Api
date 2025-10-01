@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import {
   Body,
   Controller,
@@ -6,25 +7,24 @@ import {
   Param,
   Patch,
   Post,
-  Query,
   ParseIntPipe,
   ValidationPipe,
 } from '@nestjs/common';
-import { Users } from './users';
+import { UsersService } from './users.service';
 import { createUserDto } from './dto/create-users.dto';
 import { UpdateUserDto } from './dto/update-users.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly Users: Users) {}
+  constructor(private readonly UsersService: UsersService) {}
   @Get()
-  findall(@Query('role') role?: 'INTERN' | 'ADMIN' | 'ENGINEER') {
-    return this.Users.findAll(role);
+  findall() {
+    return this.UsersService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.Users.findOne(id);
+    return this.UsersService.findOne(id);
   }
 
   @Post()
@@ -32,7 +32,7 @@ export class UsersController {
     @Body(ValidationPipe)
     user: createUserDto,
   ) {
-    return this.Users.createUser(user);
+    return this.UsersService.createUser(user);
   }
 
   @Patch(':id')
@@ -41,11 +41,11 @@ export class UsersController {
     @Body(ValidationPipe)
     userUpdate: UpdateUserDto,
   ) {
-    return this.Users.updateUser(id, userUpdate);
+    return this.UsersService.updateUser(id, userUpdate);
   }
 
   @Delete(':id')
   deleteUser(@Param('id', ParseIntPipe) id: number) {
-    return this.Users.deleteUser(id);
+    return this.UsersService.deleteUser(id);
   }
 }
